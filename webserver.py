@@ -57,9 +57,10 @@ while 1:
         connectionSocket.close()
         continue
 
+    if not filename:
+        filename = "index"
     if ("." not in filename):
         filename="html/" + filename+ ".html"
-
     try:
         f = open(filename, "r")
     except (IOError):
