@@ -58,7 +58,7 @@ while 1:
         continue
 
     if ("." not in filename):
-        filename="html" + filename+ ".html"
+        filename="html/" + filename+ ".html"
 
     try:
         f = open(filename, "r")
