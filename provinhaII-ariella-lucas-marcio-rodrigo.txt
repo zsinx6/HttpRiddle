@@ -1,0 +1,8 @@
+Ariella Brambilla Yamada 8937034
+Lucas de Carvalho Rodrigues da Silva 8624511
+Márcio de Souza Campos 8937462
+Rodrigo de Andrade Santos Weigert 8937503
+
+http://httpriddle.herokuapp.com
+
+https://github.com/zsinx6/HttpRiddle
