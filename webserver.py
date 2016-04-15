@@ -2,6 +2,7 @@ import socket
 import datetime
 import commands 
 import mimetypes
+import os
 
 mimetypes.add_type("text", "css")
 
