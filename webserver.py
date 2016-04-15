@@ -59,18 +59,21 @@ while 1:
 
     if ("." not in filename):
         filename="html/" + filename+ ".html"
-
-    try:
-        f = open(filename, "r")
-    except (IOError):
-        response = HTTPResponse(404, "close", "text/html", "")
-        connectionSocket.send(response.getMessage())
+    if not filename:
+        filename = "index"
     else:
-        (mimetype, _) = mimetypes.guess_type(filename)
-        content = f.read()
-        response = HTTPResponse(200, "close", mimetype, content)
-        connectionSocket.send(response.getMessage())
-        f.close()
-        connectionSocket.close()
+
+        try:
+            f = open(filename, "r")
+        except (IOError):
+            response = HTTPResponse(404, "close", "text/html", "")
+            connectionSocket.send(response.getMessage())
+        else:
+            (mimetype, _) = mimetypes.guess_type(filename)
+            content = f.read()
+            response = HTTPResponse(200, "close", mimetype, content)
+            connectionSocket.send(response.getMessage())
+            f.close()
+            connectionSocket.close()
 
 serverSocket.close()
