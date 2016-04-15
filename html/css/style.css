@@ -1,15 +1,18 @@
 body {
 	background-color: #1abc9c;
+	font-family: 'American Typewriter', 'Courier New';
 }
 
 #header {
-	margin-top: 30px;
-	font-family: 'American Typewriter', 'Courier New';
-	font-size: 100px;
+	margin-top: 10px;
+	font-size: 150px;
+	font-variant: bold;
 	color: #FFFFFF;	
 	text-align: center;
 }
 
 #question {
 	margin: 20px;
+	color: #9b59b6;
+	text-align: center;
 }
