@@ -51,8 +51,8 @@ print("Bind successful.")
 while 1:
 	connectionSocket, addr = serverSocket.accept()
 	request = connectionSocket.recv(1024)
-	print("Got request:")
-	print(request);
+	#print("Got request:")
+	#print(request);
 	parts = request.split()
 
 	if (len(parts) > 0 and parts[0] == "GET"):
@@ -68,6 +68,8 @@ while 1:
 		connectionSocket.send(response.getMessage())
 	else:
 		mimetype = commands.getstatusoutput("file -b --mime-type " + filename)[1]
+		if (".css" in filename)
+			mimetype = "text/css"
 		content = f.read()
 		response = HTTPResponse(200, "close", mimetype, content)
 		connectionSocket.send(response.getMessage())
