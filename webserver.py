@@ -66,7 +66,7 @@ while 1:
     except (IOError):
         f = open("html/erro.html", "r")
         content = f.read()
-        response = HTTPResponse(200, "close", mimetype, content)
+        response = HTTPResponse(200, "close", "text/html", content)
         connectionSocket.send(response.getMessage())
         f.close()
         connectionSocket.close()
