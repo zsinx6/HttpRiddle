@@ -68,7 +68,7 @@ while 1:
 		connectionSocket.send(response.getMessage())
 	else:
 		mimetype = commands.getstatusoutput("file -b --mime-type " + filename)[1]
-		if (".css" in filename)
+		if (".css" in filename):
 			mimetype = "text/css"
 		content = f.read()
 		response = HTTPResponse(200, "close", mimetype, content)
