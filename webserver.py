@@ -4,6 +4,8 @@ import commands
 #import os
 import mimetypes
 
+mimetypes.add_type("text", "css")
+
 class HTTPResponse:
 	__reasonPhrase = {
 			200:"OK",
