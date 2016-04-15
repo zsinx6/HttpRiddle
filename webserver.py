@@ -1,7 +1,10 @@
 import socket
 import datetime
 import commands 
-import os
+#import os
+import mimetypes
+
+mimetypes.add_type("text", "css")
 
 class HTTPResponse:
 	__reasonPhrase = {
@@ -61,13 +64,19 @@ while 1:
 		connectionSocket.close()
 		continue
 
+	if ("." not in filename):
+		
+
 	try:
 		f = open(filename, "r")
 	except (IOError):
 		response = HTTPResponse(404, "close", "text/html", "")
 		connectionSocket.send(response.getMessage())
 	else:
-		mimetype = commands.getstatusoutput("file -b --mime-type " + filename)[1]
+		(mimetype, _) = mimetypes.guess_type(filename)
+		#mimetype = commands.getstatusoutput("file -b --mime-type " + filename)[1]
+		#if (".css" in filename):
+		#mimetype = "text/css"
 		content = f.read()
 		response = HTTPResponse(200, "close", mimetype, content)
 		connectionSocket.send(response.getMessage())
