@@ -64,8 +64,12 @@ while 1:
     try:
         f = open(filename, "r")
     except (IOError):
-        response = HTTPResponse(404, "close", "text/html", "")
+        f = open("html/errou.html", "r")
+        content = f.read()
+        response = HTTPResponse(200, "close", mimetype, content)
         connectionSocket.send(response.getMessage())
+        f.close()
+        connectionSocket.close()
     else:
         (mimetype, _) = mimetypes.guess_type(filename)
         content = f.read()
