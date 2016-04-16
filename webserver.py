@@ -33,7 +33,7 @@ class HTTPResponse:
             msg = msg + line + "\r\n"
             msg = msg + "\r\n"
             msg = msg + self.content
-        return msg
+            return msg
 
 
 
