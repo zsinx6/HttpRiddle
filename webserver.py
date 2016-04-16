@@ -29,13 +29,11 @@ class HTTPResponse:
         msg = msg + self.statusLine + "\r\n"
         for line in self.generalHeaders:
             msg = msg + line + "\r\n"
-        
-		for line in self.entityHeaders:
-			msg = msg + line + "\r\n"
-
-		msg = msg + "\r\n"
-		msg = msg + self.content
-		return msg
+        for line in self.entityHeaders:
+            msg = msg + line + "\r\n"
+            msg = msg + "\r\n"
+            msg = msg + self.content
+        return msg
 
 
 
@@ -61,23 +59,23 @@ while 1:
 
     if not filename:
         filename = "index"
-    if ("." not in filename):
-        filename="html/" + filename+ ".html"
-    try:
-        f = open(filename, "r")
-    except (IOError):
-        f = open("html/erro.html", "r")
-        content = f.read()
-        response = HTTPResponse(200, "close", "text/html", content)
-        connectionSocket.send(response.getMessage())
-        f.close()
-        connectionSocket.close()
-    else:
-        (mimetype, _) = mimetypes.guess_type(filename)
-        content = f.read()
-        response = HTTPResponse(200, "close", mimetype, content)
-        connectionSocket.send(response.getMessage())
-        f.close()
-        connectionSocket.close()
+        if ("." not in filename):
+            filename="html/" + filename+ ".html"
+            try:
+                f = open(filename, "r")
+            except (IOError):
+                f = open("html/erro.html", "r")
+                content = f.read()
+                response = HTTPResponse(200, "close", "text/html", content)
+                connectionSocket.send(response.getMessage())
+                f.close()
+                connectionSocket.close()
+        else:
+            (mimetype, _) = mimetypes.guess_type(filename)
+            content = f.read()
+            response = HTTPResponse(200, "close", mimetype, content)
+            connectionSocket.send(response.getMessage())
+            f.close()
+            connectionSocket.close()
 
 serverSocket.close()
