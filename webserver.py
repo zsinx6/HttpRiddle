@@ -31,11 +31,9 @@ class HTTPResponse:
             msg = msg + line + "\r\n"
         for line in self.entityHeaders:
             msg = msg + line + "\r\n"
-            msg = msg + "\r\n"
-            msg = msg + self.content
-            return msg
-
-
+        msg = msg + "\r\n"
+        msg = msg + self.content
+        return msg
 
 serverSocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 port = int(os.environ.get("PORT", 17995))
