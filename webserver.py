@@ -29,11 +29,13 @@ class HTTPResponse:
         msg = msg + self.statusLine + "\r\n"
         for line in self.generalHeaders:
             msg = msg + line + "\r\n"
-            for line in self.entityHeaders:
-                msg = msg + line + "\r\n"
-                msg = msg + "\r\n"
-                msg = msg + self.content
-                return msg
+        
+		for line in self.entityHeaders:
+			msg = msg + line + "\r\n"
+
+		msg = msg + "\r\n"
+		msg = msg + self.content
+		return msg
 
 
 
